@@ -89,23 +89,24 @@ En la segunda petición se incluye la cabecera "Authorization" como le indica el
 [Al terminar el ejercicio es recomendable hacer commit de los ficheros modificados]
 
 12. Vamos a ver más a fondo el intercambio RTP. En Telephony hay una opción RTP. Empecemos mirando los flujos RTP.
- ** ¿Cuántos flujos hay? ¿por qué?
- ** ¿Cuántos paquetes se pierden?
- ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta?
- ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad?
+ ** ¿Cuántos flujos hay? ¿por qué? Dos flujos. Tienen puertos origen y destino distintos ya que uno es el de RTP y otro el de H.261
+ ** ¿Cuántos paquetes se pierden? Ninguno
+ ** ¿Cuál es el valor máximo del delta? ¿Y qué es lo que significa el valor de delta? 1290.479 ms. Es el retardo de un paquete respecto al anterior.
+ ** ¿Cuáles son los valores de jitter (medio y máximo)? ¿Qué quiere decir eso? ¿Estamos ante una conversación de calidad? RTP: Jitter medio 42.5 ms y máximo 119.635 ms. H.261: Jitter medio 153.240 ms y máximo 183.096 ms
+ El jitter es la fluctuación del tiempo de llegada de paquetes. Son valores bajos así que nos encontramos ante una comunicación de calidad
 
 
 13. Elige un paquete RTP de audio. Analiza el flujo de audio en Telephony -> RTP -> Stream Analysis.
- ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado?
- ** ¿Podemos saber si éste es el primer paquete que nos han enviado?
- ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál?
- ** ¿A qué se debe el cambio tan brusco del jitter?
- ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué?
- ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter?
+ ** ¿Cuánto valen el delta y el jitter para el primer paquete que ha llegado? 0 milisegundos para cada uno
+ ** ¿Podemos saber si éste es el primer paquete que nos han enviado? Sí, debido a estos dos valores anteriores
+ ** Los valores de jitter son menores de 10ms hasta un paquete dado. ¿Cuál? Hasta el paquete 247 que tiene un jitter de 38.82ms
+ ** ¿A qué se debe el cambio tan brusco del jitter? Puede ser debido a la saturación de la red, falta de sincronismo o cambios dinámicos en las rutas
+ ** ¿Es comparable este cambio con el tiempo desde la recepción del paquete anterior? ¿Por qué? El cambio es pequeño en comparación con la diferencia del anterior delta a éste
+ ** ¿Cuál es la dependencia entre el tiempo transcurrido desde el paquete anterior y el valor de jitter? A mayor retardo desde el paquete anterior se produce un pico de aumento de jitter que va disminuyendo poco a poco
 
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
- ** ¿Cuánto dura la conversación?
+ ** ¿Cuánto dura la conversación? 24.80289 ms
  ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
 
 
