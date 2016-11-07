@@ -77,10 +77,12 @@ En la segunda petición se incluye la cabecera "Authorization" como le indica el
 
 11. Una vez conectado, estudia el intercambio de tramas.
  ** ¿Qué protocolo(s) se utiliza(n)? ¿Para qué sirven estos protocolos?
- ** ¿Cuál es el tamaño de paquete de los mismos?
- ** ¿Se utilizan bits de padding?
- ** ¿Cuál es la periodicidad de los paquetes que se envían?
- ** ¿Cuántos bits/segundo estamos enviando?
+ RTP que es un protocolo del nivel de sesión que sirve para transmitir información multimedia en tiempo real
+ H.261 que es un protocolo para comprimir esta información audiovisual
+ ** ¿Cuál es el tamaño de paquete de los mismos? Los paquetes H.261 varían entre 1000-1100 y 200-500 bytes. Los paquetes RTP tienen un tamaño fijo de 214 bytes
+ ** ¿Se utilizan bits de padding? No
+ ** ¿Cuál es la periodicidad de los paquetes que se envían? Un paquete RTP cada dos centésimas de segundo aprox
+ ** ¿Cuántos bits/segundo estamos enviando? 132328 bits por segundo aproximadamente, 132 kbps
 
 
 
