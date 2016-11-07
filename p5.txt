@@ -69,7 +69,7 @@ En la segunda petición se incluye la cabecera "Authorization" como le indica el
 
 
 10. Una vez registrados, podemos efectuar una llamada. Vamos a probar con el servicio de eco de Ekiga que nos permite comprobar si nos hemos conectado correctamente. El servicio de eco tiene la dirección sip:500@ekiga.net. Veamos el INVITE de cerca.
- ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP? Sí, nombre Gregorio Robles y dirección SIP grex@ekiga.net
+ ** ¿Puede verse el nombre del que efectúa la llamada, así como su dirección SIP? Sí, nombre Gregorio Robles y dirección SIP sip:grex@ekiga.net
  ** ¿Qué es lo que contiene el cuerpo de la trama? ¿En qué formato/protocolo está? Información de la conexión, el tiempo y los atributos media a tratar. Está en SDP (Session Description Protocol)
  ** ¿Tiene éxito el primer intento? ¿Cómo lo sabes? No, por el mensaje 407 Proxy Authentication Required del servidor
  ** ¿En qué se diferencia el segundo INVITE más abajo del primero? ¿A qué crees que se debe esto? El segundo INVITE contiene la cabecera Proxy-Authorization que le pedía en el primero. FALTA
@@ -133,16 +133,17 @@ Captura de una sesión SIP
 Captura una sesión SIP de una conversación con el número SIP sip:9999@qxip.net. Tendrás que dar de alta una cuenta en www.ekiga.net con el navegador. Recuerda también que has de comenzar a capturar tramas antes de arrancar Ekiga para ver todo el proceso en el que participa SIP. Para realizar los siguientes ejercicios, deberás crearte una cuenta en ekiga.net y darte de alta la lanzar la aplicación.
 
 17. Observa las diferencias en el inicio de la conversación entre el entorno del laboratorio y el del ejercicio anterior:
- ** ¿Es necesario el uso de DNS y STUN? ¿Por qué?
- ** ¿Son diferentes el registro y la descripción de la sesión?
+ ** ¿Es necesario el uso de DNS y STUN? ¿Por qué? DNS sí, STUN no. Necesitas DNS para tener la dirección IP de la cuenta con la que queremos conectarnos pero no necesitamos atravesar un NAT
+ ** ¿Son diferentes el registro y la descripción de la sesión? No es necesario el uso del método Register, debido a que conocemos la dirección del usuario con el que queremos contactar, y podemos enviarle directamente el método Invite.
 
 
 18. Identifica las diferencias existentes entre esta conversación y la conversación anterior:
- ** ¿Cuántos flujos tenemos?
- ** ¿Cuál es su periodicidad?
- ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter?
+ ** ¿Cuántos flujos tenemos? Tenemos dos flujos, ambos en g711U y en direcciones opuestas
+ ** ¿Cuál es su periodicidad? 160 
+ ** ¿Cuánto es el valor máximo del delta y los valores medios y máximo del jitter? Delta máximo -> Flujo 1: 30.547ms Flujo 2: 76.518ms; Jitter medio -> Flujo 1: 3.484ms Flujo 2: 1.704ms; Jitter máximo -> Flujo 1: 5.140ms Flujo 2: 6.269ms
  ** ¿Podrías reproducir la conversación desde Wireshark? ¿Cómo? Comprueba que poniendo un valor demasiado pequeño para el buffer de jitter, la conversación puede no tener la calidad necesaria.
- ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net?
+ Sí, filtrando por RTP toda nuestra captura en el menú Telephony > VoIP Calls seleccionando el flujo y pulsando Play Stream
+ ** ¿Sabrías decir qué tipo de servicio ofrece sip:9999@qxip.net? Música
 
 
 
