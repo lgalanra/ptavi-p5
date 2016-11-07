@@ -107,19 +107,19 @@ En la segunda petición se incluye la cabecera "Authorization" como le indica el
 
 14. En Telephony selecciona el menú VoIP calls. Verás que se lista la llamada de voz IP capturada en una ventana emergente. Selecciona esa llamada y pulsa el botón Graph.
  ** ¿Cuánto dura la conversación? 24.80289 ms
- ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs?
+ ** ¿Cuáles son sus SSRC? ¿Por qué hay varios SSRCs? ¿Hay CSRCs? Hay dos SSRC, uno para cada flujo de datos. 0xbf4afd37 para g711A y 0x43306582 para h261. No hay CSRCs
 
 
 15. Identifica la trama donde se finaliza la conversación.
- ** ¿Qué método SIP se utiliza?
- ** ¿En qué trama(s)?
- ** ¿Por qué crees que se envía varias veces?
+ ** ¿Qué método SIP se utiliza? BYE
+ ** ¿En qué trama(s)? En las tramas 924, 925, 927 y 933
+ ** ¿Por qué crees que se envía varias veces? Porque al estar trabajando sobre UDP no es un entorno fiable, y se manda varias veces hasta que recibe el mensaje 200 OK
 
 
 16. Finalmente, se cierra la aplicación de VozIP.
- ** ¿Por qué aparece una instrucción SIP del tipo REGISTER?
- ** ¿En qué trama sucede esto?
- ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)?
+ ** ¿Por qué aparece una instrucción SIP del tipo REGISTER? Porque es la manera que tiene el User Agent de darse de baja
+ ** ¿En qué trama sucede esto? 950 y 952
+ ** ¿En qué se diferencia con la instrucción que se utilizó con anterioridad (al principio de la sesión)? En que el campo Expires de la cabecera del REGISTER está a 0, indicando que el usuario se da de baja
 
 
 
